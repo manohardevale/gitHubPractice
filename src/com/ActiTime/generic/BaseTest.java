@@ -4,10 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import com.ActiTime.pomclasses.LoginPage;
 
 public class BaseTest implements IAutoConst{
 
@@ -22,15 +21,11 @@ public class BaseTest implements IAutoConst{
 	@BeforeMethod
 	public void openApp()
 	{
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
 		String url = Utility.getPropertyValue("URL");
 		driver.get(url);
 		String ITO = Utility.getPropertyValue("ITO");
-		driver.manage().timeouts().implicitlyWait(Long.parseLong(ITO), TimeUnit.SECONDS);
-
-		String username = Utility.getPropertyValue("un");
-		String password = Utility.getPropertyValue("pwd");
-				
+		driver.manage().timeouts().implicitlyWait(Long.parseLong(ITO), TimeUnit.SECONDS);		
 	}
 	
 	@AfterMethod
