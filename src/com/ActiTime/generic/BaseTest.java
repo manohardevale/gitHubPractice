@@ -1,9 +1,13 @@
 package com.ActiTime.generic;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import com.ActiTime.pomclasses.LoginPage;
 
 public class BaseTest implements IAutoConst{
 
@@ -21,6 +25,12 @@ public class BaseTest implements IAutoConst{
 		driver = new ChromeDriver();
 		String url = Utility.getPropertyValue("URL");
 		driver.get(url);
+		String ITO = Utility.getPropertyValue("ITO");
+		driver.manage().timeouts().implicitlyWait(Long.parseLong(ITO), TimeUnit.SECONDS);
+
+		String username = Utility.getPropertyValue("un");
+		String password = Utility.getPropertyValue("pwd");
+				
 	}
 	
 	@AfterMethod

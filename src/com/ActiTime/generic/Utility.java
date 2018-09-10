@@ -5,23 +5,18 @@ import java.util.Properties;
 
 public class Utility implements IAutoConst {
 
-	public static String getPropertyValue(String PropertyName)
-	{
-		String PropertyValue ="";
+	public static String getPropertyValue(String propertyName){
+		String propertyValue ="";
 		Properties prop = new Properties();
-		
-		try {
-		
-			prop.load(new FileInputStream(CONFIG_PATH));
-		PropertyValue = prop.getProperty(PropertyName);
-		
-		}
-		catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return PropertyValue;
-		
+			try {
+				prop.load(new FileInputStream(CONFIG_PATH));
+				propertyValue = prop.getProperty(propertyName);
+				} 
+			
+			catch (Exception e) 
+			{
+			} 
+			return propertyValue;
 	}
 	
 	
