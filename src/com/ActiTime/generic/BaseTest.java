@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.ActiTime.pomclasses.LoginPage;
+
 public class BaseTest implements IAutoConst{
 
 	public WebDriver driver;
@@ -25,7 +27,14 @@ public class BaseTest implements IAutoConst{
 		String url = Utility.getPropertyValue("URL");
 		driver.get(url);
 		String ITO = Utility.getPropertyValue("ITO");
-		driver.manage().timeouts().implicitlyWait(Long.parseLong(ITO), TimeUnit.SECONDS);		
+		driver.manage().timeouts().implicitlyWait(Long.parseLong(ITO), TimeUnit.SECONDS);
+		
+		LoginPage lp= new LoginPage(driver);
+		String un=Utility.getPropertyValue("username");
+		String pwd=Utility.getPropertyValue("password");
+		lp.setUserName(un);
+		lp.setPwd(pwd);		
+		
 	}
 	
 	@AfterMethod
